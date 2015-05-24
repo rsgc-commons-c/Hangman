@@ -3,37 +3,20 @@
 //May 14, 2015
 
 //chooses the word
-int word = int(random(0, 20));
+int word = int(random(0, 19));
 //independant varibles
 int x = 0;
 int y = 0;
+int z = 0;
+int counter[] = new int [23];//there is no q or j in any word
+
+char [] input = {
+  'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+};
+
 //letters
 char input0 = 'a';
-char input1 = 'b';
-char input2 = 'c';
-char input3 = 'd';
-char input4 = 'e';
-char input5 = 'f';
-char input6 = 'g';
-char input7 = 'h';
-char input8 = 'i';
-char input9 = 'j';
-char input10= 'k'; 
-char input11 = 'l';
-char input12 = 'm';
-char input13 = 'n';
-char input14 = 'o';
-char input15 = 'p';
-char input16 = 'q';
-char input17 = 'r';
-char input18 = 's';
-char input19 = 't';
-char input20 = 'u';
-char input21 = 'v';
-char input22 = 'w';
-char input23 = 'x';
-char input24 = 'y';
-char input25 = 'z';
+
 
 //words
 String[] pickword = {
@@ -78,7 +61,9 @@ void draw() {
   //displays word = characters in console
   println("WORD: " + pickword[word]);
   println("CHAR: " + characters);
-  
+  println("test: " + input [z]);
+
+
   //rect that shows the misguessed words
   rect(100, 100, 300, 300);
 
@@ -121,9 +106,18 @@ void draw() {
     x=7;
   }
 
-  if (x=4 && y ) {
 
+    
+//checks for letters
+if(input[z] == pickword[word].charAt(counter[y])) {
+  println("match");
+  y++;
+  while (y<x);
+} //else{
+  //println("nomatch");
+   y=0;
+ }
+  
+ 
 
-
-    y++;
-  }
+//}
