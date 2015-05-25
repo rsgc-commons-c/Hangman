@@ -78,5 +78,5 @@ void keyPressed() {
   }
   if (key == 'z') {
     z = 25;
-  }
+  } 
 }
