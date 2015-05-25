@@ -7,6 +7,7 @@ int word = int(random(0, 20));
 //independant varibles
 
 boolean clicked =false;
+boolean gameover =false;
 
 int xWrong = 150;
 int yWrong = 300;
@@ -146,10 +147,13 @@ void draw() {
     text("YOU WIN", 100, 100);
     text("Score: " + score, 100, 200);
   }
-  if(score == 0){
+  if (score == 0) {
     rect(0, 0, 1300, 775);
     text("GAMEOVER", 500, 500);
   }
+
+
+
 
   strokeWeight(20);
   if (drawHangman == 1) {
@@ -204,25 +208,32 @@ void draw() {
     line(1220, 195, 1215, 190);
   }
   if (drawHangman == 12) {
-    line(100, 100, 100, 100);
-    line(100, 100, 100, 100);
+    line(1185, 210, 1190, 215);
+    line(1190, 215, 1185, 210);
   }
   if (drawHangman == 13) {
     //mouth
-    line(100, 100, 100, 100);
+    line(1185, 220, 1220, 220);
   }
   if (drawHangman == 14) {
-    rect(0, 0, 1300, 775);
-    text("GAMEOVER", 500, 500);
+    //gameover = true;
     score = 0;
+    
   } else {
-    if(y<x+1 && score >= 0){
-    fill(100, 360, 360);
-    text("KEEP GUESSING!", 100, 100);
+    if (y<x+1 && score >= 0) {
+      fill(100, 360, 360);
+    }
   }
+  if(gameover == true) {
+   fill(0, 100, 0);
+   rect(0,0, width, height);
+   text("score: " + score, 300, 300);
+   text("word was: "+ pickword[word], 400, 400);
+   text("GAMEOVER", 500, 500);
   }
-  if(drawHangman ==14);
+  println(drawHangman + "/" + gameover); 
 }
+
 
 void keyReleased() {
   clicked = false;

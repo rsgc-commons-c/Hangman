@@ -3,6 +3,7 @@ void keyPressed() {
   if(clicked == false) {
     clicked = true;
   //letters
+
   if (key == 'a') {
     z = 0;
   }
@@ -84,10 +85,14 @@ void keyPressed() {
   } 
 
   }
+  //this is where the magic happens
   if(y<x+1){
   if (input[z] == pickword[word].charAt(y)) {
     println("match");
     y = y+1;
+    fill(360, 0, 100);
+    rect(100, 100, 300, 300);
+    xWrong = 150;
     textSize(20);
     text(input[z], xLetter, yLetter);
     xLetter = xLetter + 100;
@@ -97,11 +102,12 @@ void keyPressed() {
       drawHangman = drawHangman +1;
 
       fill(100, 360, 360);
+      if(gameover == false){
       text(input[z], xWrong, yWrong);
       xWrong = xWrong + 15;
       score = score - 50;
+      }
     }
   }
   }
-    
-}
+   }
