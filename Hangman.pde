@@ -6,12 +6,14 @@
 int word = int(random(0, 20));
 //independant varibles
 
+boolean clicked =false;
 
-int xWrong = 300;
+int xWrong = 150;
 int yWrong = 300;
 int xLetter = 125;
 int yLetter = 575;
 int drawHangman = 0;
+int v = 0;
 int x = 0;
 int y = 0;
 int z = 9;//there are no j's in any word
@@ -84,7 +86,7 @@ void draw() {
 
   //rect that shows the misguessed words
   fill(0, 0, 0);
-  rect(100, 100, 300, 300);
+
 
 
 
@@ -136,31 +138,20 @@ void draw() {
     x=7;
   }
 
-rect(0, 0, 500, 500);
-  //checks for letters
-  if (input[z] == pickword[word].charAt(y)) {
-    println("match");
-    y = y+1;
-    textSize(14);
-    text(input[z], xLetter, yLetter);
-    xLetter = xLetter + 100;
-    score = score + 250;
-  } 
-    if (keyPressed && input[z] != pickword[word].charAt(y) && drawHangman <= 0) {
-      drawHangman = drawHangman +1;
-     fill(100, 360, 360);
-      text(input[z], xWrong, yWrong);
-       xWrong = xWrong + 5;
-       
-    }
-
 
   if (y == x+1) {
     textSize(100);
+    rect(0, 0, width, height); 
     fill(100, 360, 360);
     text("YOU WIN", 100, 100);
+    text("Score: " + score, 100, 200);
   }
-strokeWeight(20);
+  if(score == 0){
+    rect(0, 0, 1300, 775);
+    text("GAMEOVER", 500, 500);
+  }
+
+  strokeWeight(20);
   if (drawHangman == 1) {
     //base
     line(800, 600, 1200, 600);
@@ -221,10 +212,18 @@ strokeWeight(20);
     line(100, 100, 100, 100);
   }
   if (drawHangman == 14) {
+    rect(0, 0, 1300, 775);
     text("GAMEOVER", 500, 500);
+    score = 0;
   } else {
+    if(y<x+1 && score >= 0){
     fill(100, 360, 360);
     text("KEEP GUESSING!", 100, 100);
   }
+  }
+  if(drawHangman ==14);
 }
-  
+
+void keyReleased() {
+  clicked = false;
+}
